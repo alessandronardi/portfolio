@@ -4,2009 +4,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nardi Alessandro | AI Advisor - AI first</title>
+    <title>Alessandro Nardi | AI enthusiast e advisor per professionisti</title>
     <meta name="description"
-        content="AI enthusiast, accompagno professionisti e curiosi nella transizione AI First. Strategia e analisi casi d'uso.">
+        content="Accompagno professionisti curiosi nell'adozione pratica dell'intelligenza artificiale, con focus su strumenti utili, flussi di lavoro ed esempi concreti.">
+    <meta name="author" content="Alessandro Nardi">
+    
+    <!-- Open Graph / Meta per condivisione social e LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alessandro Nardi | AI enthusiast e advisor">
+    <meta property="og:description"
+        content="Accompagno professionisti curiosi nell'adozione pratica dell'intelligenza artificiale, con focus su strumenti utili, flussi di lavoro ed esempi concreti.">
+    <meta property="og:image" content="profile-ai.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Alessandro Nardi | AI enthusiast e advisor">
+    <meta name="twitter:description"
+        content="Accompagno professionisti curiosi nell'adozione pratica dell'intelligenza artificiale, con focus su strumenti utili ed esempi concreti.">
+
+    <!-- Tipografia Inter & Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
         rel="stylesheet">
-    <style>
-        /* === DESIGN SYSTEM === */
-        :root {
-            --bg-primary: #0f1419;
-            --bg-secondary: #1a1f2e;
-            --bg-tertiary: #242b3d;
-            --accent-cyan: #4dd0e1;
-            --accent-purple: #9c7cf4;
-            --accent-cyan-glow: rgba(77, 208, 225, 0.3);
-            --accent-purple-glow: rgba(156, 124, 244, 0.3);
-            --text-primary: #f0f4f8;
-            --text-secondary: #a0aec0;
-            --text-muted: #718096;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-bg-hover: rgba(255, 255, 255, 0.06);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-border-hover: rgba(77, 208, 225, 0.3);
-            --transition-fast: 0.2s ease;
-            --transition-medium: 0.4s ease;
-            --transition-slow: 0.8s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all var(--transition-fast);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* === SCROLL PROGRESS BAR === */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            z-index: 9999;
-            transition: width 0.1s linear;
-        }
-
-        /* === AVAILABILITY STATUS === */
-        .availability-badge {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            z-index: 1000;
-            animation: fadeInDown 1s ease 0.5s both;
-        }
-
-        .availability-dot {
-            width: 10px;
-            height: 10px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
-            }
-
-            50% {
-                box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* === PARTICLE CANVAS === */
-        #particle-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        /* === HERO SECTION === */
-        header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            padding: 100px 20px;
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, var(--accent-cyan-glow), var(--accent-purple-glow));
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease both;
-        }
-
-        .hero-tag::before {
-            content: '◆';
-            color: var(--accent-cyan);
-            font-size: 0.7rem;
-        }
-
-        .glitch-wrapper {
-            position: relative;
-        }
-
-        .glitch {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-            position: relative;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-        }
-
-        .glitch::before {
-            color: var(--accent-cyan);
-            animation: glitch-1 4s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            color: var(--accent-purple);
-            animation: glitch-2 4s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-1 {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0;
-                transform: translate(0);
-            }
-
-            91% {
-                opacity: 0.8;
-                transform: translate(-2px, 2px);
-            }
-
-            92% {
-                opacity: 0;
-                transform: translate(0);
-            }
-
-            93% {
-                opacity: 0.8;
-                transform: translate(2px, -2px);
-            }
-
-            94% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes glitch-2 {
-
-            0%,
-            90%,
-            100% {
-                opacity: 0;
-                transform: translate(0);
-            }
-
-            91.5% {
-                opacity: 0.8;
-                transform: translate(2px, -2px);
-            }
-
-            92.5% {
-                opacity: 0;
-                transform: translate(0);
-            }
-
-            93.5% {
-                opacity: 0.8;
-                transform: translate(-2px, 2px);
-            }
-
-            94.5% {
-                opacity: 0;
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            font-weight: 400;
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .typing-container {
-            height: 30px;
-            margin-bottom: 40px;
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-
-        .typing-text {
-            font-size: 1rem;
-            color: var(--accent-cyan);
-            font-family: 'Space Grotesk', monospace;
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.2em;
-            background: var(--accent-cyan);
-            margin-left: 2px;
-            animation: blink 1s infinite;
-            vertical-align: text-bottom;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--bg-primary);
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-            animation: fadeInUp 0.8s ease 0.8s both;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 40px var(--accent-cyan-glow);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--text-muted);
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            40% {
-                transform: translateX(-50%) translateY(-10px);
-            }
-
-            60% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-        }
-
-        /* === SECTIONS === */
-        section {
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 60px;
-        }
-
-        /* === PROBLEM SECTION === */
-        #problem {
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .problem-content p {
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-
-        .highlight-quote {
-            position: relative;
-            padding: 30px;
-            background: var(--glass-bg);
-            border-left: 3px solid var(--accent-purple);
-            border-radius: 0 12px 12px 0;
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
-
-        .highlight-quote::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 4rem;
-            color: var(--accent-purple);
-            opacity: 0.3;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        /* === VISION SECTION (Cards) === */
-        #vision {
-            background: var(--bg-secondary);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            position: relative;
-            padding: 40px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            transition: all var(--transition-medium);
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            transform: scaleX(0);
-            transition: transform var(--transition-medium);
-        }
-
-        .card:hover {
-            background: var(--glass-bg-hover);
-            border-color: var(--glass-border-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card-icon {
-            width: 56px;
-            height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--accent-cyan-glow), var(--accent-purple-glow));
-            border-radius: 12px;
-            font-size: 1.5rem;
-            margin-bottom: 24px;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* === ROI SECTION === */
-        #roi {
-            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-            text-align: center;
-        }
-
-        .roi-stats {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 60px;
-            flex-wrap: wrap;
-        }
-
-        .roi-stat {
-            text-align: center;
-        }
-
-        .roi-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-
-        .roi-label {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        /* === ABOUT/FOOTER === */
-        footer {
-            background: var(--bg-tertiary);
-            padding: 100px 0 60px 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .profile-section {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .profile-photo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--glass-border);
-            box-shadow: 0 0 30px var(--accent-cyan-glow);
-        }
-
-        .profile-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .profile-info .title {
-            color: var(--accent-cyan);
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-        }
-
-        .profile-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* QR Code Section */
-        .qr-section {
-            text-align: center;
-        }
-
-        .qr-container {
-            display: inline-block;
-            padding: 20px;
-            background: white;
-            border-radius: 16px;
-            position: relative;
-            animation: qr-pulse 3s infinite;
-        }
-
-        @keyframes qr-pulse {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(77, 208, 225, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 0 0 15px rgba(77, 208, 225, 0);
-            }
-        }
-
-        .qr-container canvas {
-            display: block;
-        }
-
-        .qr-scan-line {
-            position: absolute;
-            left: 20px;
-            right: 20px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            animation: scan 2s linear infinite;
-        }
-
-        @keyframes scan {
-            0% {
-                top: 20px;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                top: calc(100% - 20px);
-                opacity: 0;
-            }
-        }
-
-        .qr-label {
-            margin-top: 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .qr-label a {
-            color: var(--accent-cyan);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .qr-label a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid var(--glass-border);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* === CHATBOT === */
-        .chat-toggle {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px var(--accent-cyan-glow);
-            transition: all var(--transition-fast);
-            z-index: 1000;
-        }
-
-        .chat-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .chat-toggle svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--bg-primary);
-        }
-
-        .chat-window {
-            position: fixed;
-            bottom: 100px;
-            right: 24px;
-            width: 380px;
-            max-height: 500px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            display: none;
-            flex-direction: column;
-            z-index: 1000;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .chat-window.active {
-            display: flex;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .chat-header {
-            padding: 16px 20px;
-            background: var(--bg-tertiary);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .chat-header-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-        }
-
-        .chat-header-title .dot {
-            width: 8px;
-            height: 8px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-
-        .chat-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px;
-            transition: color var(--transition-fast);
-        }
-
-        .chat-close:hover {
-            color: var(--text-primary);
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-height: 350px;
-        }
-
-        .chat-message {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .chat-message.bot {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-
-        .chat-message.user {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--bg-primary);
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chat-message.loading {
-            display: flex;
-            gap: 4px;
-            padding: 16px;
-        }
-
-        .chat-message.loading span {
-            width: 8px;
-            height: 8px;
-            background: var(--text-muted);
-            border-radius: 50%;
-            animation: typing-dots 1.4s infinite ease-in-out both;
-        }
-
-        .chat-message.loading span:nth-child(1) {
-            animation-delay: -0.32s;
-        }
-
-        .chat-message.loading span:nth-child(2) {
-            animation-delay: -0.16s;
-        }
-
-        @keyframes typing-dots {
-
-            0%,
-            80%,
-            100% {
-                transform: scale(0.6);
-                opacity: 0.5;
-            }
-
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .chat-input-container {
-            padding: 16px 20px;
-            border-top: 1px solid var(--glass-border);
-            display: flex;
-            gap: 12px;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            background: var(--bg-primary);
-            border: 1px solid var(--glass-border);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color var(--transition-fast);
-        }
-
-        .chat-input:focus {
-            border-color: var(--accent-cyan);
-        }
-
-        .chat-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .chat-send {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform var(--transition-fast);
-        }
-
-        .chat-send:hover {
-            transform: scale(1.05);
-        }
-
-        .chat-send:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .chat-send svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--bg-primary);
-        }
-
-        /* === REVEAL ANIMATIONS === */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .reveal-delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .reveal-delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        /* === FULLSCREEN CARDS SECTION === */
-        .fullscreen-cards-container {
-            position: relative;
-        }
-
-        .fullscreen-card {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            scroll-snap-align: start;
-            overflow: hidden;
-        }
-
-        .fullscreen-card:nth-child(1) {
-            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
-        }
-
-        .fullscreen-card:nth-child(2) {
-            background: linear-gradient(135deg, #1a1f2e 0%, #0f1419 100%);
-        }
-
-        .fullscreen-card:nth-child(3) {
-            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
-        }
-
-        .fullscreen-card-content {
-            max-width: 900px;
-            padding: 60px 40px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fullscreen-card.active .fullscreen-card-content {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* === ROTATING NEON BORDER (Snake-style) === */
-        .fullscreen-card-content {
-            position: relative;
-        }
-
-        .fullscreen-card-content::before {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            border-radius: 20px;
-            padding: 3px;
-            background: conic-gradient(from var(--border-angle, 0deg),
-                    transparent 0%,
-                    transparent 25%,
-                    var(--accent-cyan) 30%,
-                    var(--accent-purple) 35%,
-                    var(--accent-cyan) 40%,
-                    transparent 45%,
-                    transparent 100%);
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: rotate-border 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .fullscreen-card.active .fullscreen-card-content::before {
-            opacity: 1;
-        }
-
-        @keyframes rotate-border {
-            0% {
-                --border-angle: 0deg;
-            }
-
-            100% {
-                --border-angle: 360deg;
-            }
-        }
-
-        @property --border-angle {
-            syntax: '<angle>';
-            inherits: false;
-            initial-value: 0deg;
-        }
-
-        /* Glow effect behind the border */
-        .fullscreen-card-content::after {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 24px;
-            background: conic-gradient(from var(--border-angle, 0deg),
-                    transparent 0%,
-                    transparent 20%,
-                    var(--accent-cyan-glow) 30%,
-                    var(--accent-purple-glow) 40%,
-                    transparent 50%,
-                    transparent 100%);
-            filter: blur(15px);
-            animation: rotate-border 4s linear infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: -1;
-        }
-
-        .fullscreen-card.active .fullscreen-card-content::after {
-            opacity: 0.6;
-        }
-
-        .fullscreen-card h3 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .fullscreen-card-description {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .fullscreen-card-example {
-            position: relative;
-            padding: 30px 40px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            text-align: left;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .fullscreen-card-example p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
-            font-style: italic;
-        }
-
-        .fullscreen-card-example strong {
-            color: var(--accent-cyan);
-            font-style: normal;
-        }
-
-        /* Progress Dots */
-        .scroll-progress-dots {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .scroll-progress-dots.visible {
-            opacity: 1;
-        }
-
-        .progress-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--glass-border);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .progress-dot.active {
-            background: var(--accent-cyan);
-            box-shadow: 0 0 20px var(--accent-cyan-glow);
-            transform: scale(1.3);
-        }
-
-        /* === MAGNETIC BUTTONS === */
-        .btn-magnetic {
-            position: relative;
-            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        /* === 3D TILT CARDS === */
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.1s ease;
-        }
-
-        .card-3d-inner {
-            transform: translateZ(30px);
-        }
-
-        /* === FLOATING ELEMENTS === */
-        .floating-element {
-            position: absolute;
-            pointer-events: none;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .floating-circle {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 1px solid var(--accent-cyan);
-            animation: float-rotate 20s linear infinite;
-        }
-
-        .floating-square {
-            width: 150px;
-            height: 150px;
-            border: 1px solid var(--accent-purple);
-            transform: rotate(45deg);
-            animation: float-rotate-reverse 25s linear infinite;
-        }
-
-        @keyframes float-rotate {
-            0% {
-                transform: rotate(0deg) translateY(0);
-            }
-
-            50% {
-                transform: rotate(180deg) translateY(-30px);
-            }
-
-            100% {
-                transform: rotate(360deg) translateY(0);
-            }
-        }
-
-        @keyframes float-rotate-reverse {
-            0% {
-                transform: rotate(45deg) translateX(0);
-            }
-
-            50% {
-                transform: rotate(-135deg) translateX(20px);
-            }
-
-            100% {
-                transform: rotate(45deg) translateX(0);
-            }
-        }
-
-        /* === WAVE DIVIDERS === */
-        .wave-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            overflow: hidden;
-        }
-
-        .wave-divider svg {
-            position: absolute;
-            bottom: 0;
-            width: 200%;
-            height: 100%;
-            animation: wave-slide 8s linear infinite;
-        }
-
-        @keyframes wave-slide {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* === TEXT REVEAL === */
-        .text-reveal-word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .text-reveal-word.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* === ENHANCED STATS === */
-        .roi-stat-enhanced {
-            position: relative;
-        }
-
-        .roi-stat-enhanced::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            transition: width 0.5s ease;
-        }
-
-        .roi-stat-enhanced.animated::after {
-            width: 60px;
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 900px) {
-
-            .problem-grid,
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .roi-stats {
-                gap: 40px;
-            }
-
-            .qr-section {
-                margin-top: 40px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .availability-badge {
-                top: 10px;
-                right: 10px;
-                padding: 8px 14px;
-                font-size: 0.75rem;
-            }
-
-            .chat-window {
-                width: calc(100% - 48px);
-                max-height: 70vh;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-section {
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-            }
-        }
-    </style>
+    
+    <!-- Foglio di stile modulare (anti-slop, dark minimalist) -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Barra di avanzamento scroll -->
     <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="ambient-glow"></div>
 
-    <div class="availability-badge">
-        <span class="availability-dot"></span>
-        <span>Disponibile per consulenze</span>
-    </div>
+    <!-- Barra di navigazione -->
+    <nav class="site-nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-brand">Alessandro Nardi <span>/ AI</span></a>
+            <ul class="nav-links">
+                <li><a href="#sfida" class="nav-link">La sfida</a></li>
+                <li><a href="#casi-uso" class="nav-link">Ambiti di intervento</a></li>
+                <li><a href="#impatto" class="nav-link">Risultati</a></li>
+                <li><a href="#chi-sono" class="nav-link">Chi sono</a></li>
+            </ul>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                <span>Disponibile per consulenze</span>
+            </div>
+        </div>
+    </nav>
 
-    <canvas id="particle-canvas"></canvas>
-
-    <header>
-        <div class="container">
-            <span class="hero-tag">AI Advisor</span>
-
-            <div class="glitch-wrapper">
-                <h1 class="glitch" data-text="Ripensa il tuo lavoro. Abbraccia il futuro.">
-                    Ripensa il tuo lavoro.<br>Abbraccia il futuro.
-                </h1>
+    <!-- Sezione Hero -->
+    <header class="hero-section">
+        <div class="container hero-inner">
+            <div class="hero-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 8v8M8 12h8" />
+                </svg>
+                <span>AI advisor per professionisti</span>
             </div>
 
-            <p class="hero-subtitle">
-                Accompagno professionisti curiosi nella transizione verso una mentalità "AI First".
-                Non parlo di hype, ma di risultati concreti e misurabili.
+            <h1 class="hero-title">
+                Semplifica il tuo lavoro quotidiano con <span class="highlight">l'intelligenza artificiale</span>.
+            </h1>
+
+            <p class="hero-lead">
+                Un ponte pratico tra le novità dell'AI e le tue attività quotidiane. Niente promesse irrealistiche o tecnicismi fini a se stessi: solo strumenti testati, casi d'uso concreti e supporto per professionisti curiosi.
             </p>
 
-            <div class="typing-container">
-                <span class="typing-text" id="typingText"></span>
+            <!-- Typing pill per casi d'uso concreti -->
+            <div class="typing-box">
+                <span id="typingText"></span>
                 <span class="typing-cursor"></span>
             </div>
 
-            <a href="#problem" class="btn-primary">
-                Scopri il valore
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-            </a>
-        </div>
-
-        <div class="scroll-indicator">
-            <span>Scorri</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7" />
-            </svg>
+            <div class="hero-actions">
+                <a href="https://www.linkedin.com/in/alessandro-nardi-8152a694/" target="_blank" rel="noopener" class="btn btn-primary">
+                    <span>Connettiti su LinkedIn</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="#casi-uso" class="btn btn-secondary">
+                    <span>Esplora i casi d'uso</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 13l5 5 5-5M12 6v12" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </header>
 
-    <section id="problem">
-        <div class="container">
-            <div class="problem-grid">
-                <div class="problem-content reveal">
-                    <span class="section-label">La sfida</span>
-                    <h2 class="section-title">Il costo nascosto del "si è sempre fatto così".</h2>
-                    <p>
-                        L'evoluzione dei modelli di Intelligenza Artificiale è esponenziale, ma l'adozione
-                        è spesso stagnante.
-                    </p>
-                    <p>
-                        Mentre la tecnologia corre, rimanere fermi ai vecchi processi non è più una scelta sicura: è un
-                        rischio competitivo. L'ostacolo non è la complessità tecnica, ma la resistenza culturale al
-                        cambiamento.
-                    </p>
-                </div>
-                <div class="highlight-quote reveal reveal-delay-1">
-                    Il divario tra chi usa l'AI e chi la ignora si sta allargando ogni giorno. Il mio obiettivo è
-                    colmare questo vuoto, trasformando l'incertezza in strategia operativa.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="vision" class="fullscreen-cards-container">
-        <!-- Progress Dots -->
-        <div class="scroll-progress-dots" id="progressDots">
-            <div class="progress-dot active" data-index="0"></div>
-            <div class="progress-dot" data-index="1"></div>
-            <div class="progress-dot" data-index="2"></div>
-        </div>
-
-        <!-- Floating Elements -->
-        <div class="floating-element floating-circle" style="top: 10%; left: -150px;"></div>
-        <div class="floating-element floating-square" style="top: 60%; right: -75px;"></div>
-
-        <!-- Card 1: Analisi & Strategia -->
-        <div class="fullscreen-card active" id="card-1">
-            <div class="fullscreen-card-content">
-                <h3>Analisi & Strategia</h3>
-                <p class="fullscreen-card-description">
-                    Non serve automatizzare il caos. Analizziamo insieme i tuoi flussi attuali per capire dove l'AI
-                    può agire come leva moltiplicatrice, eliminando colli di bottiglia e inefficienze nascoste e aprire le porte a nuove opportunità.
-                </p>
-                <div class="fullscreen-card-example">
-                    <p>
-                        <strong>Un esempio concreto:</strong> Marco, operatore di controllo qualità, dedicava <strong>... ore a
-                            settimana</strong>
-                        alla raccolta e all'analisi dei rapporti di misura di produzione. Dopo un'analisi dei flussi di
-                        lavoro,
-                        abbiamo identificato i passaggi ripetitivi e introdotto l'estrazione automatica dei dati e la loro visualizzazione ordinata in dashboard.
-                        Ora impiega <strong>appena 5 minuti</strong> per lo stesso lavoro.
-                    </p>
-                </div>
-            </div>
-            <!-- Wave Divider -->
-            <div class="wave-divider">
-                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M0,60 C300,120 600,0 900,60 C1050,90 1150,30 1200,60 L1200,120 L0,120 Z"
-                        fill="rgba(26,31,46,0.5)"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Card 2: Adozione Consapevole -->
-        <div class="fullscreen-card" id="card-2">
-            <div class="fullscreen-card-content">
-                <h3>Adozione Consapevole</h3>
-                <p class="fullscreen-card-description">
-                    Superiamo insieme la paura dello strumento. Ti guido nell'utilizzo pratico dei Large Language Models
-                    per trasformarli da semplici chat a collaboratori instancabili del tuo team.
-                </p>
-                <div class="fullscreen-card-example">
-                    <p>
-                        <strong>Un esempio concreto:</strong> Lucia, consulente HR, evitava l'AI per paura di sbagliare.
-                        In <strong>3 sessioni pratiche</strong> ha imparato a delegare la prima bozza delle job
-                        description
-                        all'intelligenza artificiale, rivedendola poi rapidamente. Risultato: <strong>ore
-                            risparmiate</strong>
-                        per ogni posizione aperta.
-                    </p>
-                </div>
-            </div>
-            <div class="wave-divider">
-                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M0,60 C300,0 600,120 900,60 C1050,30 1150,90 1200,60 L1200,120 L0,120 Z"
-                        fill="rgba(15,20,25,0.5)"></path>
-                </svg>
-            </div>
-        </div>
-
-        <!-- Card 3: Formazione Continua -->
-        <div class="fullscreen-card" id="card-3">
-            <div class="fullscreen-card-content">
-                <h3>Formazione Continua</h3>
-                <p class="fullscreen-card-description">
-                    Il panorama AI cambia di giorno in giorno. Il mio ruolo e la mia passione è filtrare il rumore e portarti solo le innovazioni
-                    che impattano realmente il tuo lavoro quotidiano, mantenendoti sempre un passo avanti.
-                </p>
-                <div class="fullscreen-card-example">
-                    <p>
-                        <strong>Un esempio concreto:</strong> Ogni mese condivido con i miei contatti le novità AI che
-                        contano davvero. Generazione di contenuto, elaborazioni di codice, automazioni e stato dell'arte.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="roi">
-        <div class="container reveal">
-            <span class="section-label">Il ritorno</span>
-            <h2 class="section-title">Un investimento a rendimento esponenziale</h2>
-            <p class="section-subtitle" style="margin: 0 auto;">
-                Molti vedono la formazione come un costo. Nell'era dell'AI, è l'unico investimento che ti restituisce
-                <strong>tempo</strong>.
-            </p>
-
-            <div class="roi-stats">
-                <div class="roi-stat">
-                    <div class="roi-number" data-target="10">0</div>
-                    <div class="roi-label">ore risparmiate / settimana</div>
-                </div>
-                <div class="roi-stat">
-                    <div class="roi-number" data-target="40">0</div>
-                    <div class="roi-label">ore risparmiate / mese</div>
-                </div>
-                <div class="roi-stat">
-                    <div class="roi-number" data-target="480">0</div>
-                    <div class="roi-label">ore risparmiate / anno</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="about">
-        <div class="container">
-            <div class="footer-content">
-                <div class="profile-section reveal">
-                    <img src="profile-ai.png" alt="Nardi Alessandro" class="profile-photo" id="profilePhoto">
-                    <div class="profile-info">
-                        <h3>Nardi Alessandro</h3>
-                        <p class="title">AI Advisor</p>
+    <main>
+        <!-- Sezione 1: La sfida -->
+        <section id="sfida">
+            <div class="container">
+                <div class="challenge-grid">
+                    <div class="challenge-text">
+                        <span class="section-label">La sfida</span>
+                        <h2 class="section-title">Superare il rumore di fondo dell'AI.</h2>
                         <p>
-                            Sono un AI early adopter appassionato. Ho vissuto in prima persona l'accelerazione
-                            tecnologica degli ultimi anni e ho deciso di mettere la mia esperienza al servizio degli altri.
-                            Credo in un futuro dove l'umanità guida con genio e sregolatezza e l'AI esegue.
+                            Il mondo dell'intelligenza artificiale si muove a un ritmo vertiginoso. Tra annunci continui, gergo specialistico e strumenti che nascono ogni giorno, è facile sentirsi disorientati o avere l'impressione che sia tutto troppo complicato.
+                        </p>
+                        <p>
+                            La verità è che per ottenere vantaggi reali non serve saper programmare. Serve piuttosto avere una panoramica chiara degli strumenti giusti, capire quali compiti ripetitivi possono essere delegati e adottarli nei propri ritmi senza stravolgere la propria routine.
                         </p>
                     </div>
-                </div>
-
-                <div class="qr-section reveal reveal-delay-1">
-                    <div class="qr-container" id="qrCode">
-                        <div class="qr-scan-line"></div>
+                    <div class="challenge-quote-card">
+                        <p>
+                            "Il valore dell'intelligenza artificiale non risiede nella complessità della tecnologia, ma nella semplicità con cui elimina una fatica dalla tua giornata lavorativa."
+                        </p>
+                        <div class="challenge-quote-author">— Alessandro Nardi</div>
                     </div>
-                    <p class="qr-label">
-                        Connettiti su
-                        <a href="https://www.linkedin.com/in/alessandro-nardi-8152a694/" target="_blank" rel="noopener">
-                            LinkedIn
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M7 17L17 7M17 7H7M17 7V17" />
-                            </svg>
-                        </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 2: Ambiti di intervento e casi d'uso (Bento Grid) -->
+        <section id="casi-uso">
+            <div class="container">
+                <span class="section-label">Ambiti di intervento</span>
+                <h2 class="section-title">Casi d'uso e supporto pratico.</h2>
+                <p class="section-subtitle">
+                    Tre ambiti operativi in cui l'esperienza e la curiosità si trasformano in tempo risparmiato ed efficienza quotidiana.
+                </p>
+
+                <div class="bento-grid">
+                    <!-- Card 1 (Wide): Analisi flussi e casi d'uso -->
+                    <article class="bento-item bento-wide">
+                        <div>
+                            <div class="bento-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                                </svg>
+                            </div>
+                            <h3 class="bento-title">Analisi dei flussi di lavoro e individuazione opportunità</h3>
+                            <p class="bento-desc">
+                                Esaminiamo insieme le tue attività ricorrenti per scoprire dove l'AI può agire come leva di moltiplicazione immediata, eliminando passaggi macchinosi, colli di bottiglia e dispersioni di tempo.
+                            </p>
+                        </div>
+                        <div class="bento-example">
+                            <p>
+                                <strong>Caso pratico:</strong> Marco, addetto al controllo qualità, dedicava diverse ore a settimana all'aggregazione e pulizia manuale dei rapporti di misura. Con una procedura mirata di estrazione guidata dei dati, ora completa la stessa attività in appena 5 minuti di controllo.
+                            </p>
+                            <div class="bento-tags">
+                                <span class="tag">Mappatura attività</span>
+                                <span class="tag">Estrazione dati</span>
+                                <span class="tag">Ottimizzazione tempi</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Adozione guidata e prompt engineering -->
+                    <article class="bento-item bento-col-6">
+                        <div>
+                            <div class="bento-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </div>
+                            <h3 class="bento-title">Adozione guidata e prompt engineering applicato</h3>
+                            <p class="bento-desc">
+                                Ti guido all'uso pratico dei modelli linguistici (Claude, ChatGPT, Gemini). Imparerai a formulare istruzioni chiare e contestualizzate per redigere bozze, sintetizzare documenti lunghi ed elaborare informazioni senza allucinazioni.
+                            </p>
+                        </div>
+                        <div class="bento-example">
+                            <p>
+                                <strong>Caso pratico:</strong> Lucia, consulente HR, ha imparato a delegare la prima bozza di annunci e riepiloghi ai modelli AI, dimezzando i tempi di preparazione con piena accuratezza.
+                            </p>
+                            <div class="bento-tags">
+                                <span class="tag">Prompt engineering</span>
+                                <span class="tag">Sintesi documenti</span>
+                                <span class="tag">Claude & ChatGPT</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Automazioni quotidiane -->
+                    <article class="bento-item bento-col-6">
+                        <div>
+                            <div class="bento-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7" />
+                                    <rect x="14" y="3" width="7" height="7" />
+                                    <rect x="14" y="14" width="7" height="7" />
+                                    <rect x="3" y="14" width="7" height="7" />
+                                </svg>
+                            </div>
+                            <h3 class="bento-title">Automazioni quotidiane e micro-flussi</h3>
+                            <p class="bento-desc">
+                                Panoramica su come connettere tra loro gli applicativi che già usi (fogli di calcolo, email, n8n, Make) per creare routine automatiche che eliminano il lavoro noioso e ridondante.
+                            </p>
+                        </div>
+                        <div class="bento-example">
+                            <p>
+                                <strong>Caso pratico:</strong> Ricezione automatica di file, estrazione dei campi chiave ed invio di notifiche sintetiche su canali di lavoro predefiniti, senza codice invasivo.
+                            </p>
+                            <div class="bento-tags">
+                                <span class="tag">Integrazioni no-code</span>
+                                <span class="tag">n8n</span>
+                                <span class="tag">Routine automatiche</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sezione 3: Risultati e impatto -->
+        <section id="impatto" class="metrics-section">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-8);">
+                    <span class="section-label">I risultati</span>
+                    <h2 class="section-title">L'impatto misurabile dell'adozione pratica.</h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">
+                        L'AI non è un fine, ma un mezzo per liberare energie da reinvestire nel valore e nelle relazioni.
                     </p>
                 </div>
-            </div>
 
-            <div class="footer-bottom">
-                © 2026 Nardi Alessandro · AI enthusiast
+                <div class="metrics-grid" id="roi">
+                    <div class="metric-card">
+                        <div class="metric-number" data-target="10">0</div>
+                        <div class="metric-label">ore risparmiate in media a settimana sulle routine</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number" data-target="80" data-suffix="%">0</div>
+                        <div class="metric-label">tempo in meno per la prima bozza di testi e ricerche</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-number" data-target="100" data-suffix="%">0</div>
+                        <div class="metric-label">approccio pratico orientato a use case reali</div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- Sezione 4: Chi sono -->
+        <section id="chi-sono">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: var(--space-8);">
+                    <span class="section-label">Chi sono</span>
+                    <h2 class="section-title">Alessandro Nardi: AI enthusiast e advisor.</h2>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-avatar-wrapper">
+                        <img src="profile-ai.png" alt="Alessandro Nardi" class="profile-avatar" id="profilePhoto" width="140" height="140">
+                    </div>
+
+                    <div class="profile-info">
+                        <h3>Alessandro Nardi</h3>
+                        <p class="profile-role">AI enthusiast e advisor per professionisti</p>
+                        <p class="profile-bio">
+                            Sono un appassionato ed early adopter di tecnologie emergenti e intelligenza artificiale. Ho vissuto da vicino l'accelerazione degli ultimi anni, testando con mano strumenti, modelli e flussi per capire cosa funziona davvero sul campo. Metto questa esperienza a disposizione di professionisti curiosi che desiderano orientarsi con serenità, individuare gli use case giusti per la propria attività e lavorare con rinnovata efficienza.
+                        </p>
+                        <div class="profile-actions">
+                            <a href="https://www.linkedin.com/in/alessandro-nardi-8152a694/" target="_blank" rel="noopener" class="btn btn-primary">
+                                <span>Parliamone su LinkedIn</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="qr-widget">
+                        <div class="qr-box" id="qrCode"></div>
+                        <div class="qr-caption">Scansiona per collegarti</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 Alessandro Nardi · AI enthusiast e advisor</p>
+            <ul class="footer-links">
+                <li><a href="https://www.linkedin.com/in/alessandro-nardi-8152a694/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="#scrollProgress">Torna in cima</a></li>
+            </ul>
         </div>
     </footer>
 
-    <button class="chat-toggle" id="chatToggle" aria-label="Apri chat">
-        <svg viewBox="0 0 24 24">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+    <!-- Widget Chatbot (Modale Interattivo) -->
+    <button class="chat-toggle-btn" id="chatToggle" aria-label="Apri assistente virtuale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </svg>
     </button>
 
-    <div class="chat-window" id="chatWindow">
+    <div class="chat-window" id="chatWindow" role="dialog" aria-labelledby="chatTitle" aria-hidden="true">
         <div class="chat-header">
-            <div class="chat-header-title">
-                <span class="dot"></span>
-                <span>Assistente AI</span>
+            <div class="chat-header-info">
+                <span class="status-dot"></span>
+                <span class="chat-header-title" id="chatTitle">Assistente virtuale</span>
             </div>
-            <button class="chat-close" id="chatClose" aria-label="Chiudi chat">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 6L6 18M6 6l12 12" />
+            <button class="chat-close-btn" id="chatClose" aria-label="Chiudi finestra chat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
             </button>
         </div>
+
         <div class="chat-messages" id="chatMessages">
-            <div class="chat-message bot">
-                Ciao! Sono l'assistente AI di Alessandro. Come posso aiutarti a scoprire come l'intelligenza artificiale
-                può trasformare il tuo business?
+            <div class="chat-msg chat-msg-bot">
+                Ciao! Sono l'assistente virtuale di Alessandro. Come posso aiutarti a scoprire casi d'uso e strumenti AI utili per il tuo lavoro?
             </div>
         </div>
-        <div class="chat-input-container">
-            <input type="text" class="chat-input" id="chatInput" placeholder="Scrivi un messaggio..."
-                autocomplete="off">
-            <button class="chat-send" id="chatSend" aria-label="Invia messaggio">
-                <svg viewBox="0 0 24 24">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+
+        <div class="chat-input-bar">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Scrivi una domanda..." autocomplete="off">
+            <button class="chat-send-btn" id="chatSend" aria-label="Invia messaggio">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
                 </svg>
             </button>
         </div>
     </div>
 
+    <!-- Script esterni e applicativi -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="config.js"></script>
-
-    <script>
-        // === CONFIGURATION ===
-        const CONFIG = {
-            GEMINI_API_KEY: (typeof SECRET_CONFIG !== 'undefined') ? SECRET_CONFIG.GEMINI_API_KEY : 'INSERISCI_QUI_LA_TUA_CHIAVE_API',
-            N8N_WEBHOOK_URL: 'YOUR_N8N_WEBHOOK_URL',
-            LINKEDIN_URL: 'https://www.linkedin.com/in/alessandro-nardi-8152a694/',
-            SYSTEM_PROMPT: `Sei l'assistente AI di Alessandro Nardi, AI Advisor specializzato nell'aiutare professionisti e PMI ad adottare l'intelligenza artificiale.
-
-Regole:
-- Rispondi sempre in italiano
-- Sii professionale, accogliente e conciso
-- Se non conosci la risposta, suggerisci di contattare Alessandro direttamente su LinkedIn
-- Concentrati sui benefici concreti dell'AI per il business e i workflow
-- Non fare promesse specifiche sui risultati
-- Mantieni le risposte brevi e utili (max 100 parole)`
-        };
-
-        // === SCROLL PROGRESS BAR ===
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
-
-        // === PARTICLE NETWORK ===
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouseX = 0;
-        let mouseY = 0;
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-                const dx = mouseX - this.x;
-                const dy = mouseY - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    this.x -= dx * 0.01;
-                    this.y -= dy * 0.01;
-                }
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(77, 208, 225, 0.6)';
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
-            for (let i = 0; i < count; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function drawConnections() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(77, 208, 225, ${0.2 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            drawConnections();
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-        window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-        resizeCanvas();
-        initParticles();
-        animateParticles();
-
-        // === TYPING EFFECT ===
-        const typingPhrases = [
-            "Trasformo complessità in opportunità...",
-            "Automazione intelligente per il tuo business...",
-            "Strategie AI personalizzate per PMI...",
-            "Il futuro è adesso, non domani..."
-        ];
-
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingElement = document.getElementById('typingText');
-
-        function typeEffect() {
-            const currentPhrase = typingPhrases[phraseIndex];
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            let typeSpeed = isDeleting ? 30 : 60;
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % typingPhrases.length;
-                typeSpeed = 500;
-                // Wait before typing again
-            }
-            setTimeout(typeEffect, typeSpeed);
-        }
-
-        setTimeout(typeEffect, 1000);
-
-        // === SCROLL REVEAL ===
-        const reveals = document.querySelectorAll('.reveal');
-        function revealOnScroll() {
-            reveals.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        }
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-
-        // === COUNTER ANIMATION ===
-        const counters = document.querySelectorAll('.roi-number');
-        let countersAnimated = false;
-        function animateCounters() {
-            if (countersAnimated) return;
-            const roiSection = document.getElementById('roi');
-            const sectionTop = roiSection.getBoundingClientRect().top;
-            if (sectionTop < window.innerHeight - 100) {
-                countersAnimated = true;
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2000;
-                    const increment = target / (duration / 16);
-                    let current = 0;
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            counter.textContent = Math.floor(current) + '+';
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target + '+';
-                        }
-                    };
-                    updateCounter();
-                });
-            }
-        }
-        window.addEventListener('scroll', animateCounters);
-        animateCounters();
-
-        // === QR CODE ===
-        if (typeof QRCode !== 'undefined') {
-            const qrContainer = document.getElementById('qrCode');
-            // Ensure container is empty of previous renders but keep scan line if it was absolute
-            // Actually qrcodejs appends.
-
-            new QRCode(qrContainer, {
-                text: CONFIG.LINKEDIN_URL,
-                width: 140,
-                height: 140,
-                colorDark: "#1a1f2e",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        }
-
-        // === CHATBOT ===
-        const chatToggle = document.getElementById('chatToggle');
-        const chatWindow = document.getElementById('chatWindow');
-        const chatClose = document.getElementById('chatClose');
-        const chatInput = document.getElementById('chatInput');
-        const chatSend = document.getElementById('chatSend');
-        const chatMessages = document.getElementById('chatMessages');
-
-        let conversationHistory = [];
-
-        chatToggle.addEventListener('click', () => {
-            chatWindow.classList.toggle('active');
-            chatInput.focus();
-            sendWebhookEvent('chat_opened', {});
-        });
-
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-
-        chatSend.addEventListener('click', sendMessage);
-
-        function addMessage(text, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `chat-message ${isUser ? 'user' : 'bot'}`;
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return messageDiv;
-        }
-
-        function addLoadingMessage() {
-            const loadingDiv = document.createElement('div');
-            loadingDiv.className = 'chat-message bot loading';
-            loadingDiv.innerHTML = '<span></span><span></span><span></span>';
-            chatMessages.appendChild(loadingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-            return loadingDiv;
-        }
-
-        async function sendMessage() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-
-            chatInput.value = '';
-            chatSend.disabled = true;
-
-            addMessage(message, true);
-            conversationHistory.push({ role: 'user', parts: [{ text: message }] });
-
-            const loadingMessage = addLoadingMessage();
-
-            try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${CONFIG.GEMINI_API_KEY}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [
-                            { role: 'user', parts: [{ text: CONFIG.SYSTEM_PROMPT }] },
-                            { role: 'model', parts: [{ text: 'Capito, seguirò queste linee guida.' }] },
-                            ...conversationHistory
-                        ],
-                        generationConfig: {
-                            temperature: 0.7,
-                            maxOutputTokens: 300
-                        }
-                    })
-                });
-
-                const data = await response.json();
-                loadingMessage.remove();
-
-                console.log('Gemini API Response:', data);
-
-                // Gestione errori API
-                if (data.error) {
-                    console.error('API Error:', data.error);
-                    addMessage(`Errore: ${data.error.message || 'Si è verificato un errore.'}`);
-                } else if (data.candidates && data.candidates.length > 0) {
-                    // Cerca il testo nella risposta (Gemini 2.5 può avere thinking)
-                    let botResponse = null;
-                    const parts = data.candidates[0]?.content?.parts;
-                    if (parts && parts.length > 0) {
-                        for (const part of parts) {
-                            if (part.text) {
-                                botResponse = part.text;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (botResponse) {
-                        addMessage(botResponse);
-                        conversationHistory.push({ role: 'model', parts: [{ text: botResponse }] });
-                        sendWebhookEvent('message_exchange', {
-                            userMessage: message,
-                            botResponse: botResponse,
-                            conversationLength: conversationHistory.length
-                        });
-                    } else {
-                        addMessage('Mi scuso, non ho ricevuto una risposta valida. Prova a riformulare la domanda.');
-                    }
-                } else {
-                    console.error('Unexpected response:', data);
-                    addMessage('Mi scuso, si è verificato un errore. Prova a contattare Alessandro direttamente su LinkedIn.');
-                }
-            } catch (error) {
-                loadingMessage.remove();
-                addMessage('Mi scuso, non riesco a connettermi. Prova a contattare Alessandro direttamente su LinkedIn.');
-                console.error('Chat error:', error);
-            }
-
-            chatSend.disabled = false;
-            chatInput.focus();
-        }
-
-        async function sendWebhookEvent(eventType, data) {
-            if (CONFIG.N8N_WEBHOOK_URL === 'YOUR_N8N_WEBHOOK_URL') return;
-            try {
-                await fetch(CONFIG.N8N_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        event: eventType,
-                        timestamp: new Date().toISOString(),
-                        ...data
-                    })
-                });
-            } catch (error) {
-                console.log('Webhook notification failed (non-blocking)');
-            }
-        }
-
-        // === FULLSCREEN CARDS SCROLL EFFECT ===
-        const fullscreenCards = document.querySelectorAll('.fullscreen-card');
-        const progressDots = document.getElementById('progressDots');
-        const dots = document.querySelectorAll('.progress-dot');
-        const visionSection = document.getElementById('vision');
-
-        function updateFullscreenCards() {
-            const visionRect = visionSection.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            // Show/hide progress dots based on vision section visibility
-            if (visionRect.top < windowHeight && visionRect.bottom > 0) {
-                progressDots.classList.add('visible');
-            } else {
-                progressDots.classList.remove('visible');
-            }
-
-            fullscreenCards.forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-                const cardCenter = rect.top + rect.height / 2;
-                const isActive = cardCenter > 0 && cardCenter < windowHeight;
-
-                if (isActive) {
-                    card.classList.add('active');
-                    // Update progress dots
-                    dots.forEach((dot, dotIndex) => {
-                        dot.classList.toggle('active', dotIndex === index);
-                    });
-                } else if (rect.top > windowHeight) {
-                    card.classList.remove('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateFullscreenCards);
-        updateFullscreenCards();
-
-        // Click on progress dots to scroll to card
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                fullscreenCards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
-            });
-        });
-
-        // === MAGNETIC BUTTONS ===
-        const magneticBtns = document.querySelectorAll('.btn-primary');
-
-        magneticBtns.forEach(btn => {
-            btn.classList.add('btn-magnetic');
-
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translate(0, 0)';
-            });
-        });
-
-        // === ENHANCED ROI STATS ANIMATION ===
-        const roiStats = document.querySelectorAll('.roi-stat');
-        roiStats.forEach(stat => stat.classList.add('roi-stat-enhanced'));
-
-        function animateRoiStats() {
-            const roiSection = document.getElementById('roi');
-            const sectionTop = roiSection.getBoundingClientRect().top;
-            if (sectionTop < window.innerHeight - 100) {
-                roiStats.forEach((stat, index) => {
-                    setTimeout(() => {
-                        stat.classList.add('animated');
-                    }, index * 200);
-                });
-                window.removeEventListener('scroll', animateRoiStats);
-            }
-        }
-
-        window.addEventListener('scroll', animateRoiStats);
-
-        // === PARALLAX FLOATING ELEMENTS ===
-        const floatingElements = document.querySelectorAll('.floating-element');
-
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            floatingElements.forEach((el, index) => {
-                const speed = (index + 1) * 0.05;
-                el.style.transform = `translateY(${scrollY * speed}px) rotate(${scrollY * speed * 0.5}deg)`;
-            });
-        });
-    </script>
+    <script src="config.js" onerror="console.info('config.js non presente: modalità standard attiva.')"></script>
+    <script src="script.js"></script>
 </body>
 
-
 </html>
-
-
-
